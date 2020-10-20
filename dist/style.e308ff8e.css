@@ -126,4 +126,9 @@ fieldset {
     padding-left: 16px;
 }
 
+.location input {
+    border-top-left-radius: 16px;
+    border-bottom-left-radius: 16px;
+}
+
 /*# sourceMappingURL=/style.e308ff8e.css.map */

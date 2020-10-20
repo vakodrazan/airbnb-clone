@@ -28475,47 +28475,6 @@ function WindbnbList({
     className: "description"
   }, stay.title));
 }
-},{"react":"node_modules/react/index.js"}],"SearchForm.js":[function(require,module,exports) {
-"use strict";
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.default = SearchForm;
-
-var _react = _interopRequireDefault(require("react"));
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-function SearchForm() {
-  function searchLocation(e) {
-    console.log("Search for location");
-  }
-
-  function searchGuest() {
-    console.log("Search Guest");
-  }
-
-  return /*#__PURE__*/_react.default.createElement("form", {
-    className: "search-form"
-  }, /*#__PURE__*/_react.default.createElement("fieldset", {
-    className: "location"
-  }, /*#__PURE__*/_react.default.createElement("label", null, "Location"), /*#__PURE__*/_react.default.createElement("input", {
-    type: "text",
-    placeholder: "Add location",
-    value: "",
-    name: "location",
-    onChange: searchLocation
-  })), /*#__PURE__*/_react.default.createElement("fieldset", {
-    className: "guest"
-  }, /*#__PURE__*/_react.default.createElement("label", null, "Guests"), /*#__PURE__*/_react.default.createElement("input", {
-    type: "text",
-    placeholder: "Add guests",
-    value: "",
-    name: "guest",
-    onChange: searchGuest
-  })), /*#__PURE__*/_react.default.createElement("button", null, "Search"));
-}
 },{"react":"node_modules/react/index.js"}],"Windbnb.js":[function(require,module,exports) {
 "use strict";
 
@@ -28524,27 +28483,70 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.default = Windbnb;
 
-var _react = _interopRequireDefault(require("react"));
+var _react = _interopRequireWildcard(require("react"));
 
 var _stays = _interopRequireDefault(require("./stays.json"));
 
 var _WindbnbList = _interopRequireDefault(require("./WindbnbList"));
 
-var _SearchForm = _interopRequireDefault(require("./SearchForm"));
-
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
+function _getRequireWildcardCache() { if (typeof WeakMap !== "function") return null; var cache = new WeakMap(); _getRequireWildcardCache = function () { return cache; }; return cache; }
+
+function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } if (obj === null || typeof obj !== "object" && typeof obj !== "function") { return { default: obj }; } var cache = _getRequireWildcardCache(); if (cache && cache.has(obj)) { return cache.get(obj); } var newObj = {}; var hasPropertyDescriptor = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) { var desc = hasPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : null; if (desc && (desc.get || desc.set)) { Object.defineProperty(newObj, key, desc); } else { newObj[key] = obj[key]; } } } newObj.default = obj; if (cache) { cache.set(obj, newObj); } return newObj; }
+
+// import SearchForm from './SearchForm';
 function Windbnb() {
-  return /*#__PURE__*/_react.default.createElement(_react.default.Fragment, null, /*#__PURE__*/_react.default.createElement(_SearchForm.default, null), /*#__PURE__*/_react.default.createElement("div", {
+  const [location, setLocation] = (0, _react.useState)('');
+  const [stayData, setStayData] = (0, _react.useState)([]);
+
+  function searchLocation(e) {
+    e.preventDefault();
+    setStayData(_stays.default);
+  }
+
+  const filteredStay = stayData.filter(stay => stay.city == location);
+  return /*#__PURE__*/_react.default.createElement(_react.default.Fragment, null, /*#__PURE__*/_react.default.createElement("form", {
+    onSubmit: searchLocation
+  }, /*#__PURE__*/_react.default.createElement("select", {
+    name: "location",
+    value: location,
+    onChange: e => setLocation(e.target.value)
+  }, /*#__PURE__*/_react.default.createElement("option", {
+    value: ""
+  }, "-- Where do you want to go? --"), /*#__PURE__*/_react.default.createElement("option", {
+    value: "Helsinki"
+  }, "Helsinki"), /*#__PURE__*/_react.default.createElement("option", {
+    value: "Turku"
+  }, "Turku"), /*#__PURE__*/_react.default.createElement("option", {
+    value: "Vaasa"
+  }, "Vaasa"), /*#__PURE__*/_react.default.createElement("option", {
+    value: "Oulu"
+  }, "Oulu")), /*#__PURE__*/_react.default.createElement("button", {
+    type: "submit"
+  }, "Search")), /*#__PURE__*/_react.default.createElement("div", {
     className: "content"
-  }, _stays.default.map(stay => {
-    return /*#__PURE__*/_react.default.createElement(_WindbnbList.default, {
-      key: stay.rating,
-      stay: stay
-    });
+  }, location == "" ? _stays.default.map(stay => {
+    return (
+      /*#__PURE__*/
+      // <p key={stay.rating}>{stay.city}</p>
+      _react.default.createElement(_WindbnbList.default, {
+        key: stay.rating,
+        stay: stay
+      })
+    );
+  }) : filteredStay.map(stay => {
+    return (
+      /*#__PURE__*/
+      // <p key={stay.rating}>{stay.city}</p>
+      _react.default.createElement(_WindbnbList.default, {
+        key: stay.rating,
+        stay: stay
+      })
+    );
   })));
 }
-},{"react":"node_modules/react/index.js","./stays.json":"stays.json","./WindbnbList":"WindbnbList.js","./SearchForm":"SearchForm.js"}],"index.js":[function(require,module,exports) {
+},{"react":"node_modules/react/index.js","./stays.json":"stays.json","./WindbnbList":"WindbnbList.js"}],"index.js":[function(require,module,exports) {
 "use strict";
 
 var _react = _interopRequireDefault(require("react"));

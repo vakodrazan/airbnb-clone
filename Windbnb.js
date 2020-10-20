@@ -9,9 +9,11 @@ export default function Windbnb() {
 
     function searchLocation(e) {
         e.preventDefault();
-
         setStayData(data);
     }
+
+
+    const filteredStay = stayData.filter(stay => stay.city == location)
 
     return (
         <> 
@@ -32,16 +34,21 @@ export default function Windbnb() {
                 <button type="submit">Search</button>
             </form>
             <div className="content">
-                {
-                    stayData.filter(stay => {
-                        return stay.city == location;
-                    }).map(stay => {
+                {(location == "") 
+                    ?data.map(stay => {
+                        return (
+                            // <p key={stay.rating}>{stay.city}</p>
+                            <WindbnbList key={stay.rating} stay={stay} />
+                        )
+                    })
+                    :filteredStay.map(stay => {
                             return (
                                 // <p key={stay.rating}>{stay.city}</p>
                                 <WindbnbList key={stay.rating} stay={stay} />
                             )
                         })
                 }
+            
             </div>
         </>
     )
