@@ -5,8 +5,8 @@ const svg = <svg xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 0 24 
 
 export default function WindbnbList({stay}) {
     return (
-        <div>
-            <img className="card--image" 
+        <div className="windbnb">
+            <img className="windbnb-image" 
                 src={stay.photo}
                 alt={stay.title}
             />

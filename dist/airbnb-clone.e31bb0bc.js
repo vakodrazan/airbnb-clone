@@ -28457,8 +28457,10 @@ const svg = /*#__PURE__*/_react.default.createElement("svg", {
 function WindbnbList({
   stay
 }) {
-  return /*#__PURE__*/_react.default.createElement("div", null, /*#__PURE__*/_react.default.createElement("img", {
-    className: "card--image",
+  return /*#__PURE__*/_react.default.createElement("div", {
+    className: "windbnb"
+  }, /*#__PURE__*/_react.default.createElement("img", {
+    className: "windbnb-image",
     src: stay.photo,
     alt: stay.title
   }), /*#__PURE__*/_react.default.createElement("div", {
@@ -28537,7 +28539,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "56809" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "56825" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};
