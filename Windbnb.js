@@ -13,7 +13,20 @@ export default function Windbnb() {
     }
 
 
-    const filteredStay = stayData.filter(stay => stay.city == location)
+    
+
+    const filteredStay = stayData.filter(stay => stay.city == location);
+    const searchByLocation = (location == "") 
+            ?data.map(stay => {
+                return (
+                    <WindbnbList key={stay.rating} stay={stay} />
+                )
+            })
+            :filteredStay.map(stay => {
+                    return (
+                        <WindbnbList key={stay.rating} stay={stay} />
+                    )
+                })
 
     return (
         <> 
@@ -34,21 +47,7 @@ export default function Windbnb() {
                 <button type="submit">Search</button>
             </form>
             <div className="content">
-                {(location == "") 
-                    ?data.map(stay => {
-                        return (
-                            // <p key={stay.rating}>{stay.city}</p>
-                            <WindbnbList key={stay.rating} stay={stay} />
-                        )
-                    })
-                    :filteredStay.map(stay => {
-                            return (
-                                // <p key={stay.rating}>{stay.city}</p>
-                                <WindbnbList key={stay.rating} stay={stay} />
-                            )
-                        })
-                }
-            
+                {searchByLocation}
             </div>
         </>
     )

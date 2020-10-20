@@ -28506,6 +28506,17 @@ function Windbnb() {
   }
 
   const filteredStay = stayData.filter(stay => stay.city == location);
+  const searchByLocation = location == "" ? _stays.default.map(stay => {
+    return /*#__PURE__*/_react.default.createElement(_WindbnbList.default, {
+      key: stay.rating,
+      stay: stay
+    });
+  }) : filteredStay.map(stay => {
+    return /*#__PURE__*/_react.default.createElement(_WindbnbList.default, {
+      key: stay.rating,
+      stay: stay
+    });
+  });
   return /*#__PURE__*/_react.default.createElement(_react.default.Fragment, null, /*#__PURE__*/_react.default.createElement("form", {
     onSubmit: searchLocation
   }, /*#__PURE__*/_react.default.createElement("select", {
@@ -28526,25 +28537,7 @@ function Windbnb() {
     type: "submit"
   }, "Search")), /*#__PURE__*/_react.default.createElement("div", {
     className: "content"
-  }, location == "" ? _stays.default.map(stay => {
-    return (
-      /*#__PURE__*/
-      // <p key={stay.rating}>{stay.city}</p>
-      _react.default.createElement(_WindbnbList.default, {
-        key: stay.rating,
-        stay: stay
-      })
-    );
-  }) : filteredStay.map(stay => {
-    return (
-      /*#__PURE__*/
-      // <p key={stay.rating}>{stay.city}</p>
-      _react.default.createElement(_WindbnbList.default, {
-        key: stay.rating,
-        stay: stay
-      })
-    );
-  })));
+  }, searchByLocation));
 }
 },{"react":"node_modules/react/index.js","./stays.json":"stays.json","./WindbnbList":"WindbnbList.js"}],"index.js":[function(require,module,exports) {
 "use strict";
