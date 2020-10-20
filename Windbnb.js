@@ -1,5 +1,6 @@
 import React from 'react';
 import data from './stays.json';
+import WindbnbList from './WindbnbList';
 
 export default function Windbnb() {
     return (
@@ -8,13 +9,7 @@ export default function Windbnb() {
             {
                 data.map(stay => {
                     return (
-                        <div key={stay.rating}>
-                            <img className="card--image" 
-                                src={stay.photo}
-                                
-                            />
-                            <p>{stay.city}</p>
-                        </div>
+                        <WindbnbList key={stay.rating} stay={stay} />
                     )
                 })
             }
