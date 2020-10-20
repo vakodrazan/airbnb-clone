@@ -89,4 +89,41 @@ img {
 }
 
 
+
+/* ********* Input search style ********** */
+
+fieldset {
+    border: none;
+    display: flex;
+    flex-direction: column;
+    padding: 0;
+    position: relative;
+}
+
+/* .location {
+
+} */
+
+.search-form {
+    display: flex;
+    padding-bottom: 2rem;
+}
+
+.search-form fieldset {
+    position: relative;
+    margin: 0;
+}
+
+.search-form fieldset label {
+    position: absolute;
+    left: 10%;
+    top: 10%;
+}
+
+.search-form fieldset input {
+    padding-top: 27px;
+    padding-bottom: 10px;
+    padding-left: 16px;
+}
+
 /*# sourceMappingURL=/style.e308ff8e.css.map */

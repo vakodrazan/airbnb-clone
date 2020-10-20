@@ -28488,16 +28488,32 @@ var _react = _interopRequireDefault(require("react"));
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function SearchForm() {
-  return /*#__PURE__*/_react.default.createElement("form", null, /*#__PURE__*/_react.default.createElement("fieldset", null, /*#__PURE__*/_react.default.createElement("label", null, "Location"), /*#__PURE__*/_react.default.createElement("input", {
+  function searchLocation(e) {
+    console.log("Search for location");
+  }
+
+  function searchGuest() {
+    console.log("Search Guest");
+  }
+
+  return /*#__PURE__*/_react.default.createElement("form", {
+    className: "search-form"
+  }, /*#__PURE__*/_react.default.createElement("fieldset", {
+    className: "location"
+  }, /*#__PURE__*/_react.default.createElement("label", null, "Location"), /*#__PURE__*/_react.default.createElement("input", {
     type: "text",
     placeholder: "Add location",
     value: "",
-    name: "location"
-  })), /*#__PURE__*/_react.default.createElement("fieldset", null, /*#__PURE__*/_react.default.createElement("label", null, "Guests"), /*#__PURE__*/_react.default.createElement("input", {
+    name: "location",
+    onChange: searchLocation
+  })), /*#__PURE__*/_react.default.createElement("fieldset", {
+    className: "guest"
+  }, /*#__PURE__*/_react.default.createElement("label", null, "Guests"), /*#__PURE__*/_react.default.createElement("input", {
     type: "text",
     placeholder: "Add guests",
     value: "",
-    name: "guest"
+    name: "guest",
+    onChange: searchGuest
   })), /*#__PURE__*/_react.default.createElement("button", null, "Search"));
 }
 },{"react":"node_modules/react/index.js"}],"Windbnb.js":[function(require,module,exports) {
