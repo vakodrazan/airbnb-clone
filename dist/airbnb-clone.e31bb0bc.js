@@ -28427,7 +28427,28 @@ module.exports = [{
   "beds": 3,
   "photo": "https://images.unsplash.com/photo-1523755231516-e43fd2e8dca5?ixlib=rb-1.2.1&auto=format&fit=crop&w=1275&q=80"
 }];
-},{}],"Windbnb.js":[function(require,module,exports) {
+},{}],"WindbnbList.js":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = WindbnbList;
+
+var _react = _interopRequireDefault(require("react"));
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function WindbnbList({
+  stay
+}) {
+  return /*#__PURE__*/_react.default.createElement("div", null, /*#__PURE__*/_react.default.createElement("img", {
+    className: "card--image",
+    src: stay.photo,
+    alt: stay.title
+  }), /*#__PURE__*/_react.default.createElement("div", null, stay.superHost && /*#__PURE__*/_react.default.createElement("small", null, "Super host"), /*#__PURE__*/_react.default.createElement("p", null, stay.type), /*#__PURE__*/_react.default.createElement("span", null, stay.rating)), /*#__PURE__*/_react.default.createElement("p", null, stay.title));
+}
+},{"react":"node_modules/react/index.js"}],"Windbnb.js":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -28439,19 +28460,19 @@ var _react = _interopRequireDefault(require("react"));
 
 var _stays = _interopRequireDefault(require("./stays.json"));
 
+var _WindbnbList = _interopRequireDefault(require("./WindbnbList"));
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function Windbnb() {
   return /*#__PURE__*/_react.default.createElement(_react.default.Fragment, null, /*#__PURE__*/_react.default.createElement("h2", null, "Stays in Finland"), _stays.default.map(stay => {
-    return /*#__PURE__*/_react.default.createElement("div", {
-      key: stay.rating
-    }, /*#__PURE__*/_react.default.createElement("img", {
-      className: "card--image",
-      src: stay.photo
-    }), /*#__PURE__*/_react.default.createElement("p", null, stay.city));
+    return /*#__PURE__*/_react.default.createElement(_WindbnbList.default, {
+      key: stay.rating,
+      stay: stay
+    });
   }));
 }
-},{"react":"node_modules/react/index.js","./stays.json":"stays.json"}],"index.js":[function(require,module,exports) {
+},{"react":"node_modules/react/index.js","./stays.json":"stays.json","./WindbnbList":"WindbnbList.js"}],"index.js":[function(require,module,exports) {
 "use strict";
 
 var _react = _interopRequireDefault(require("react"));
@@ -28491,7 +28512,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "60587" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "56809" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};
