@@ -5,7 +5,6 @@ import WindbnbList from './WindbnbList';
 export default function Windbnb() {
     return (
         <>
-            <h2>Stays in Finland</h2>
             {
                 data.map(stay => {
                     return (
