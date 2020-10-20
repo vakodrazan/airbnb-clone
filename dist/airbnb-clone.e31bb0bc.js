@@ -28492,7 +28492,7 @@ var _WindbnbList = _interopRequireDefault(require("./WindbnbList"));
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function Windbnb() {
-  return /*#__PURE__*/_react.default.createElement(_react.default.Fragment, null, /*#__PURE__*/_react.default.createElement("h2", null, "Stays in Finland"), _stays.default.map(stay => {
+  return /*#__PURE__*/_react.default.createElement(_react.default.Fragment, null, _stays.default.map(stay => {
     return /*#__PURE__*/_react.default.createElement(_WindbnbList.default, {
       key: stay.rating,
       stay: stay
@@ -28539,7 +28539,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "56825" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "56821" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};

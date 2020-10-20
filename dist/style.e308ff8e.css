@@ -1,5 +1,92 @@
+body {
+    margin: 0;
+    font-family: "Montserrat", Arial, Helvetica, sans-serif;
+    font-size: 14px;
+    font-weight: 500;
+}
+
 img {
     max-width: 100%;
+    border-radius: 24px;
 }
+
+.container {
+    padding-left: 12px;
+    padding-right: 12px;
+}
+
+
+.content {
+    display: inline-block;
+}
+
+/* 
+.windbnb {
+    
+} */
+
+@media (min-width: 650px) {    
+    .content {
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: space-between;
+    }
+
+    .windbnb {
+        flex-basis: 47%;
+    }
+
+    .windbnb-image {
+        height: 269px;
+        width: 395px;
+    }
+    
+}
+
+@media (min-width: 1120px) {
+    .container {
+        max-width: 1120px;
+        margin: auto;
+    }
+
+    .content {
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: space-between;
+    }
+
+    .windbnb {
+        flex-basis: 30%;
+    }
+}
+
+
+.information {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.superhost {
+    padding: 7px 10px;
+    border: 1px solid #4F4F4F;
+    border-radius: 12px;
+    text-transform: uppercase;
+    font-weight: 700;
+    font-size: 12px;
+    color: #4F4F4F;
+}
+
+.type {
+    color: #828282;
+}
+
+.ratinng {
+    display: flex;
+    align-items: center;
+}
+
 
 /*# sourceMappingURL=/style.e308ff8e.css.map */
