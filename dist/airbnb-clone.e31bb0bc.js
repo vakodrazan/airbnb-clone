@@ -28439,6 +28439,21 @@ var _react = _interopRequireDefault(require("react"));
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
+const svg = /*#__PURE__*/_react.default.createElement("svg", {
+  xmlns: "http://www.w3.org/2000/svg",
+  height: "24",
+  viewBox: "0 0 24 24",
+  width: "24"
+}, /*#__PURE__*/_react.default.createElement("path", {
+  d: "M0 0h24v24H0z",
+  fill: "none"
+}), /*#__PURE__*/_react.default.createElement("path", {
+  d: "M0 0h24v24H0z",
+  fill: "none"
+}), /*#__PURE__*/_react.default.createElement("path", {
+  d: "M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"
+}));
+
 function WindbnbList({
   stay
 }) {
@@ -28446,7 +28461,17 @@ function WindbnbList({
     className: "card--image",
     src: stay.photo,
     alt: stay.title
-  }), /*#__PURE__*/_react.default.createElement("div", null, stay.superHost && /*#__PURE__*/_react.default.createElement("small", null, "Super host"), /*#__PURE__*/_react.default.createElement("p", null, stay.type), /*#__PURE__*/_react.default.createElement("span", null, stay.rating)), /*#__PURE__*/_react.default.createElement("p", null, stay.title));
+  }), /*#__PURE__*/_react.default.createElement("div", {
+    className: "information"
+  }, stay.superHost && /*#__PURE__*/_react.default.createElement("small", {
+    className: "superhost"
+  }, "Super host"), /*#__PURE__*/_react.default.createElement("p", {
+    className: "type"
+  }, stay.type, stay.beds && `. ${stay.beds} beds`, " "), /*#__PURE__*/_react.default.createElement("span", {
+    className: "ratinng"
+  }, svg, " ", stay.rating)), /*#__PURE__*/_react.default.createElement("p", {
+    className: "description"
+  }, stay.title));
 }
 },{"react":"node_modules/react/index.js"}],"Windbnb.js":[function(require,module,exports) {
 "use strict";
