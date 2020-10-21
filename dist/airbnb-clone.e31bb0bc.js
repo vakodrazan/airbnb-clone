@@ -28475,6 +28475,43 @@ function WindbnbList({
     className: "description"
   }, stay.title));
 }
+},{"react":"node_modules/react/index.js"}],"components/FormComponent.js":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = FormComponent;
+
+var _react = _interopRequireDefault(require("react"));
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function FormComponent(props) {
+  return /*#__PURE__*/_react.default.createElement("form", {
+    onSubmit: props.searchStay
+  }, /*#__PURE__*/_react.default.createElement("select", {
+    name: "location",
+    value: props.location,
+    onChange: props.onChange
+  }, /*#__PURE__*/_react.default.createElement("option", {
+    value: ""
+  }, "-- Where do you want to go? --"), /*#__PURE__*/_react.default.createElement("option", {
+    value: "Helsinki"
+  }, "Helsinki"), /*#__PURE__*/_react.default.createElement("option", {
+    value: "Turku"
+  }, "Turku"), /*#__PURE__*/_react.default.createElement("option", {
+    value: "Vaasa"
+  }, "Vaasa"), /*#__PURE__*/_react.default.createElement("option", {
+    value: "Oulu"
+  }, "Oulu")), /*#__PURE__*/_react.default.createElement("input", {
+    type: "number",
+    name: "numberOfGuest",
+    placeholder: "How many of you will stay there"
+  }), /*#__PURE__*/_react.default.createElement("button", {
+    type: "submit"
+  }, "Search"));
+}
 },{"react":"node_modules/react/index.js"}],"Windbnb.js":[function(require,module,exports) {
 "use strict";
 
@@ -28489,6 +28526,8 @@ var _stays = _interopRequireDefault(require("./stays.json"));
 
 var _WindbnbList = _interopRequireDefault(require("./WindbnbList"));
 
+var _FormComponent = _interopRequireDefault(require("./components/FormComponent"));
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function _getRequireWildcardCache() { if (typeof WeakMap !== "function") return null; var cache = new WeakMap(); _getRequireWildcardCache = function () { return cache; }; return cache; }
@@ -28500,7 +28539,7 @@ function Windbnb() {
   const [location, setLocation] = (0, _react.useState)('');
   const [stayData, setStayData] = (0, _react.useState)([]);
 
-  function searchLocation(e) {
+  function searchStay(e) {
     e.preventDefault();
     setStayData(_stays.default);
   } // Filter the array by city
@@ -28524,29 +28563,15 @@ function Windbnb() {
   }); // Just return all the list when it isn't filtered
 
   const searchByLocation = location == "" ? mapList : filteredList;
-  return /*#__PURE__*/_react.default.createElement(_react.default.Fragment, null, /*#__PURE__*/_react.default.createElement("form", {
-    onSubmit: searchLocation
-  }, /*#__PURE__*/_react.default.createElement("select", {
-    name: "location",
-    value: location,
-    onChange: e => setLocation(e.target.value)
-  }, /*#__PURE__*/_react.default.createElement("option", {
-    value: ""
-  }, "-- Where do you want to go? --"), /*#__PURE__*/_react.default.createElement("option", {
-    value: "Helsinki"
-  }, "Helsinki"), /*#__PURE__*/_react.default.createElement("option", {
-    value: "Turku"
-  }, "Turku"), /*#__PURE__*/_react.default.createElement("option", {
-    value: "Vaasa"
-  }, "Vaasa"), /*#__PURE__*/_react.default.createElement("option", {
-    value: "Oulu"
-  }, "Oulu")), /*#__PURE__*/_react.default.createElement("button", {
-    type: "submit"
-  }, "Search")), /*#__PURE__*/_react.default.createElement("div", {
+  return /*#__PURE__*/_react.default.createElement(_react.default.Fragment, null, /*#__PURE__*/_react.default.createElement(_FormComponent.default, {
+    location: location,
+    onChange: e => setLocation(e.target.value),
+    searchStay: searchStay
+  }), /*#__PURE__*/_react.default.createElement("div", {
     className: "content"
   }, searchByLocation));
 }
-},{"react":"node_modules/react/index.js","./stays.json":"stays.json","./WindbnbList":"WindbnbList.js"}],"index.js":[function(require,module,exports) {
+},{"react":"node_modules/react/index.js","./stays.json":"stays.json","./WindbnbList":"WindbnbList.js","./components/FormComponent":"components/FormComponent.js"}],"index.js":[function(require,module,exports) {
 "use strict";
 
 var _react = _interopRequireDefault(require("react"));

@@ -1,13 +1,14 @@
 import React, { useState } from 'react';
 import data from './stays.json';
 import WindbnbList from './WindbnbList';
+import FormComponent from './components/FormComponent';
 // import SearchForm from './SearchForm';
 
 export default function Windbnb() {
     const [location, setLocation] = useState('');
     const [stayData, setStayData] = useState([]);
 
-    function searchLocation(e) {
+    function searchStay(e) {
         e.preventDefault();
         setStayData(data);
     }
@@ -39,20 +40,11 @@ export default function Windbnb() {
         <> 
             {/* <SearchForm /> */}
 
-            <form onSubmit={searchLocation}>
-                <select 
-                    name="location"
-                    value={location}
-                    onChange={(e) => setLocation(e.target.value)}
-                >
-                    <option value="">-- Where do you want to go? --</option>
-                    <option value="Helsinki">Helsinki</option>
-                    <option value="Turku">Turku</option>
-                    <option value="Vaasa">Vaasa</option>
-                    <option value="Oulu">Oulu</option>
-                </select>
-                <button type="submit">Search</button>
-            </form>
+            <FormComponent 
+                location={location} 
+                onChange={(e) => setLocation(e.target.value)}
+                searchStay={searchStay} 
+                />
             <div className="content">
                 {searchByLocation}
             </div>
