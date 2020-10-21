@@ -28489,8 +28489,11 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 
 function FormComponent(props) {
   return /*#__PURE__*/_react.default.createElement("form", {
-    onSubmit: props.searchStay
-  }, /*#__PURE__*/_react.default.createElement("select", {
+    onSubmit: props.searchStay,
+    className: "search-form"
+  }, /*#__PURE__*/_react.default.createElement("fieldset", {
+    className: "location"
+  }, /*#__PURE__*/_react.default.createElement("label", null, "Location"), /*#__PURE__*/_react.default.createElement("select", {
     name: "location",
     value: props.location,
     onChange: props.onChange
@@ -28504,11 +28507,13 @@ function FormComponent(props) {
     value: "vaasa"
   }, "Vaasa"), /*#__PURE__*/_react.default.createElement("option", {
     value: "oulu"
-  }, "Oulu")), /*#__PURE__*/_react.default.createElement("input", {
+  }, "Oulu"))), /*#__PURE__*/_react.default.createElement("fieldset", {
+    className: "guest"
+  }, /*#__PURE__*/_react.default.createElement("label", null, "Guests"), /*#__PURE__*/_react.default.createElement("input", {
     type: "number",
     name: "numberOfGuest",
     placeholder: "How many of you will stay there"
-  }), /*#__PURE__*/_react.default.createElement("button", {
+  })), /*#__PURE__*/_react.default.createElement("button", {
     type: "submit"
   }, "Search"));
 }

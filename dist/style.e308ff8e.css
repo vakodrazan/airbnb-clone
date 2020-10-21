@@ -96,8 +96,8 @@ fieldset {
     border: none;
     display: flex;
     flex-direction: column;
-    padding: 0;
     position: relative;
+    padding-bottom: 1rem;
 }
 
 /* .location {
@@ -105,8 +105,11 @@ fieldset {
 } */
 
 .search-form {
-    display: flex;
+    display: inline-block;
     padding-bottom: 2rem;
+}
+.search-form button {
+    border-radius: 16px;
 }
 
 .search-form fieldset {
@@ -121,14 +124,66 @@ fieldset {
 }
 
 .search-form fieldset input {
+    border-radius: 16px;
     padding-top: 27px;
     padding-bottom: 10px;
     padding-left: 16px;
+    background-color: #fff;
+    border: #fff;
+    box-shadow: 0px 1px 6px rgba(0, 0, 0, 0.1);
 }
 
-.location input {
-    border-top-left-radius: 16px;
-    border-bottom-left-radius: 16px;
+.location select {
+    border: #fff;
+    border-radius: 16px;
+    padding-top: 27px;
+    padding-bottom: 10px;
+    padding-left: 16px;
+    background-color: #fff;
+    box-shadow: 0px 1px 6px rgba(0, 0, 0, 0.1);
+}
+
+form {
+    line-height: 1.5;
+}
+
+.search-form button {
+    border: #fff;
+    background-color: #fff;
+    box-shadow: 0px 1px 6px rgba(0, 0, 0, 0.1);
+    border-radius: 16px;
+    padding-top: 19px;
+    padding-bottom: 19px;
+}
+
+@media (min-width: 650px) {
+    .search-form {
+        display: flex;
+        align-items: center;
+    }
+
+    fieldset {
+        padding: none;
+    }
+
+    fieldset {
+        padding: 0;
+    }
+    .search-form fieldset input {
+        border-radius: 0;
+    }
+
+    .location select {
+        border-radius: 0;
+        border-top-left-radius: 16px;
+        border-bottom-left-radius: 16px;
+    }
+    .search-form button {
+        border-radius: 0;
+        border-top-right-radius: 16px;
+        border-bottom-right-radius: 16px;
+    }
+    
 }
 
 /*# sourceMappingURL=/style.e308ff8e.css.map */
