@@ -7,6 +7,7 @@ import FormComponent from './components/FormComponent';
 export default function Windbnb() {
     const [location, setLocation] = useState('');
     const [stayData, setStayData] = useState([]);
+    const [maxGuest, setMaxGuest] = useState('');
 
     function searchStay(e) {
         e.preventDefault();
@@ -36,17 +37,29 @@ export default function Windbnb() {
             : filteredList
         ;
 
+    const filterGuest = stayData.filter(stay => stay.maxGuests >= maxGuest)
+
+    const mapNumberOfGuests = filterGuest.map(stay => {
+        return (
+            <WindbnbList key={stay.rating} stay={stay} />
+        )
+    })
+    
+    const maxNumberOfGuest = (maxGuest.length <= 0) ? mapList : mapNumberOfGuests;
+
     return (
         <> 
             {/* <SearchForm /> */}
 
             <FormComponent 
                 location={location} 
+                maxGuest={maxGuest}
+                setMaxGuest={(e) => setMaxGuest(e.target.value)}
                 onChange={(e) => setLocation(e.target.value)}
                 searchStay={searchStay} 
                 />
             <div className="content">
-                {searchByLocation}
+                {location ? searchByLocation : maxNumberOfGuest}
             </div>
         </>
     )

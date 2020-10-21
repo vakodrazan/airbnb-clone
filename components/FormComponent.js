@@ -11,7 +11,7 @@ export default function FormComponent(props) {
                     value={props.location}
                     onChange={props.onChange}
                 >
-                    <option value="">-- Where do you want to go? --</option>
+                    <option value="">Add location</option>
                     <option value="helsinki">Helsinki</option>
                     <option value="turku">Turku</option>
                     <option value="vaasa">Vaasa</option>
@@ -23,6 +23,8 @@ export default function FormComponent(props) {
                 <input 
                     type="number"
                     name="numberOfGuest"
+                    value={props.maxGuest}
+                    onChange={props.setMaxGuest}
                     placeholder="How many of you will stay there"
                 />
             </fieldset>

@@ -28499,7 +28499,7 @@ function FormComponent(props) {
     onChange: props.onChange
   }, /*#__PURE__*/_react.default.createElement("option", {
     value: ""
-  }, "-- Where do you want to go? --"), /*#__PURE__*/_react.default.createElement("option", {
+  }, "Add location"), /*#__PURE__*/_react.default.createElement("option", {
     value: "helsinki"
   }, "Helsinki"), /*#__PURE__*/_react.default.createElement("option", {
     value: "turku"
@@ -28512,6 +28512,8 @@ function FormComponent(props) {
   }, /*#__PURE__*/_react.default.createElement("label", null, "Guests"), /*#__PURE__*/_react.default.createElement("input", {
     type: "number",
     name: "numberOfGuest",
+    value: props.maxGuest,
+    onChange: props.setMaxGuest,
     placeholder: "How many of you will stay there"
   })), /*#__PURE__*/_react.default.createElement("button", {
     type: "submit"
@@ -28543,6 +28545,7 @@ function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj;
 function Windbnb() {
   const [location, setLocation] = (0, _react.useState)('');
   const [stayData, setStayData] = (0, _react.useState)([]);
+  const [maxGuest, setMaxGuest] = (0, _react.useState)('');
 
   function searchStay(e) {
     e.preventDefault();
@@ -28568,13 +28571,23 @@ function Windbnb() {
   }); // Just return all the list when it isn't filtered
 
   const searchByLocation = location == "" ? mapList : filteredList;
+  const filterGuest = stayData.filter(stay => stay.maxGuests >= maxGuest);
+  const mapNumberOfGuests = filterGuest.map(stay => {
+    return /*#__PURE__*/_react.default.createElement(_WindbnbList.default, {
+      key: stay.rating,
+      stay: stay
+    });
+  });
+  const maxNumberOfGuest = maxGuest.length <= 0 ? mapList : mapNumberOfGuests;
   return /*#__PURE__*/_react.default.createElement(_react.default.Fragment, null, /*#__PURE__*/_react.default.createElement(_FormComponent.default, {
     location: location,
+    maxGuest: maxGuest,
+    setMaxGuest: e => setMaxGuest(e.target.value),
     onChange: e => setLocation(e.target.value),
     searchStay: searchStay
   }), /*#__PURE__*/_react.default.createElement("div", {
     className: "content"
-  }, searchByLocation));
+  }, location ? searchByLocation : maxNumberOfGuest));
 }
 },{"react":"node_modules/react/index.js","./stays.json":"stays.json","./WindbnbList":"WindbnbList.js","./components/FormComponent":"components/FormComponent.js"}],"index.js":[function(require,module,exports) {
 "use strict";
@@ -28616,7 +28629,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "49778" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "58984" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};
