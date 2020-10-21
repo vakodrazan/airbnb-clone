@@ -12,21 +12,28 @@ export default function Windbnb() {
         setStayData(data);
     }
 
-
-    
-
+    // Filter the array by city
     const filteredStay = stayData.filter(stay => stay.city == location);
+
+    // Map through the array when it isn't filtered yet
+    const mapList = data.map(stay => {
+                        return (
+                            <WindbnbList key={stay.rating} stay={stay} />
+                        )
+                    });
+
+    // Map through the filtered array
+    const filteredList = filteredStay.map(stay => {
+                            return (
+                                <WindbnbList key={stay.rating} stay={stay} />
+                            )
+                        });
+
+    // Just return all the list when it isn't filtered
     const searchByLocation = (location == "") 
-            ?data.map(stay => {
-                return (
-                    <WindbnbList key={stay.rating} stay={stay} />
-                )
-            })
-            :filteredStay.map(stay => {
-                    return (
-                        <WindbnbList key={stay.rating} stay={stay} />
-                    )
-                })
+            ? mapList
+            : filteredList
+        ;
 
     return (
         <> 

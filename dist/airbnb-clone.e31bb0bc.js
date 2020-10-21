@@ -28503,20 +28503,27 @@ function Windbnb() {
   function searchLocation(e) {
     e.preventDefault();
     setStayData(_stays.default);
-  }
+  } // Filter the array by city
 
-  const filteredStay = stayData.filter(stay => stay.city == location);
-  const searchByLocation = location == "" ? _stays.default.map(stay => {
+
+  const filteredStay = stayData.filter(stay => stay.city == location); // Map through the array when it isn't filtered yet
+
+  const mapList = _stays.default.map(stay => {
     return /*#__PURE__*/_react.default.createElement(_WindbnbList.default, {
       key: stay.rating,
       stay: stay
     });
-  }) : filteredStay.map(stay => {
+  }); // Map through the filtered array
+
+
+  const filteredList = filteredStay.map(stay => {
     return /*#__PURE__*/_react.default.createElement(_WindbnbList.default, {
       key: stay.rating,
       stay: stay
     });
-  });
+  }); // Just return all the list when it isn't filtered
+
+  const searchByLocation = location == "" ? mapList : filteredList;
   return /*#__PURE__*/_react.default.createElement(_react.default.Fragment, null, /*#__PURE__*/_react.default.createElement("form", {
     onSubmit: searchLocation
   }, /*#__PURE__*/_react.default.createElement("select", {
@@ -28579,7 +28586,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "50101" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "49778" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};
