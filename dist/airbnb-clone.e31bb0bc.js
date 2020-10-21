@@ -28497,13 +28497,13 @@ function FormComponent(props) {
   }, /*#__PURE__*/_react.default.createElement("option", {
     value: ""
   }, "-- Where do you want to go? --"), /*#__PURE__*/_react.default.createElement("option", {
-    value: "Helsinki"
+    value: "helsinki"
   }, "Helsinki"), /*#__PURE__*/_react.default.createElement("option", {
-    value: "Turku"
+    value: "turku"
   }, "Turku"), /*#__PURE__*/_react.default.createElement("option", {
-    value: "Vaasa"
+    value: "vaasa"
   }, "Vaasa"), /*#__PURE__*/_react.default.createElement("option", {
-    value: "Oulu"
+    value: "oulu"
   }, "Oulu")), /*#__PURE__*/_react.default.createElement("input", {
     type: "number",
     name: "numberOfGuest",
@@ -28545,7 +28545,7 @@ function Windbnb() {
   } // Filter the array by city
 
 
-  const filteredStay = stayData.filter(stay => stay.city == location); // Map through the array when it isn't filtered yet
+  const filteredStay = stayData.filter(stay => stay.city.toLowerCase() == location.toLowerCase()); // Map through the array when it isn't filtered yet
 
   const mapList = _stays.default.map(stay => {
     return /*#__PURE__*/_react.default.createElement(_WindbnbList.default, {

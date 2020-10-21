@@ -14,7 +14,7 @@ export default function Windbnb() {
     }
 
     // Filter the array by city
-    const filteredStay = stayData.filter(stay => stay.city == location);
+    const filteredStay = stayData.filter(stay => stay.city.toLowerCase() == location.toLowerCase());
 
     // Map through the array when it isn't filtered yet
     const mapList = data.map(stay => {

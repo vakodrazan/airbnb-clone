@@ -10,10 +10,10 @@ export default function FormComponent(props) {
                 onChange={props.onChange}
             >
                 <option value="">-- Where do you want to go? --</option>
-                <option value="Helsinki">Helsinki</option>
-                <option value="Turku">Turku</option>
-                <option value="Vaasa">Vaasa</option>
-                <option value="Oulu">Oulu</option>
+                <option value="helsinki">Helsinki</option>
+                <option value="turku">Turku</option>
+                <option value="vaasa">Vaasa</option>
+                <option value="oulu">Oulu</option>
             </select>
             <input 
                 type="number"
