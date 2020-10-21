@@ -28541,7 +28541,6 @@ function _getRequireWildcardCache() { if (typeof WeakMap !== "function") return 
 
 function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } if (obj === null || typeof obj !== "object" && typeof obj !== "function") { return { default: obj }; } var cache = _getRequireWildcardCache(); if (cache && cache.has(obj)) { return cache.get(obj); } var newObj = {}; var hasPropertyDescriptor = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) { var desc = hasPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : null; if (desc && (desc.get || desc.set)) { Object.defineProperty(newObj, key, desc); } else { newObj[key] = obj[key]; } } } newObj.default = obj; if (cache) { cache.set(obj, newObj); } return newObj; }
 
-// import SearchForm from './SearchForm';
 function Windbnb() {
   const [location, setLocation] = (0, _react.useState)('');
   const [stayData, setStayData] = (0, _react.useState)([]);
@@ -28550,35 +28549,31 @@ function Windbnb() {
   function searchStay(e) {
     e.preventDefault();
     setStayData(_stays.default);
-  } // Filter the array by city
+  } // Map through the array when it isn't filtered yet
 
-
-  const filteredStay = stayData.filter(stay => stay.city.toLowerCase() == location.toLowerCase()); // Map through the array when it isn't filtered yet
 
   const mapList = _stays.default.map(stay => {
     return /*#__PURE__*/_react.default.createElement(_WindbnbList.default, {
       key: stay.rating,
       stay: stay
     });
-  }); // Map through the filtered array
+  }); // ********* Filter by city name *********** \\
+  // Filter the array by city
 
 
-  const filteredList = filteredStay.map(stay => {
-    return /*#__PURE__*/_react.default.createElement(_WindbnbList.default, {
-      key: stay.rating,
-      stay: stay
-    });
-  }); // Just return all the list when it isn't filtered
+  const filteredStay = stayData.filter(stay => stay.city.toLowerCase() == location.toLowerCase()); // Map through the filtered array
 
-  const searchByLocation = location == "" ? mapList : filteredList;
+  const filteredByCity = filteredStay.map(stay => /*#__PURE__*/_react.default.createElement(_WindbnbList.default, {
+    key: stay.rating,
+    stay: stay
+  })); // ************* FIlter by maxGuests ************ \\
+
   const filterGuest = stayData.filter(stay => stay.maxGuests >= maxGuest);
-  const mapNumberOfGuests = filterGuest.map(stay => {
-    return /*#__PURE__*/_react.default.createElement(_WindbnbList.default, {
-      key: stay.rating,
-      stay: stay
-    });
-  });
-  const maxNumberOfGuest = maxGuest.length <= 0 ? mapList : mapNumberOfGuests;
+  const filteredByNumberOfGuests = filterGuest.map(stay => /*#__PURE__*/_react.default.createElement(_WindbnbList.default, {
+    key: stay.rating,
+    stay: stay
+  }));
+  const stayDataList = location ? filteredByCity : maxGuest ? filteredByNumberOfGuests : mapList;
   return /*#__PURE__*/_react.default.createElement(_react.default.Fragment, null, /*#__PURE__*/_react.default.createElement(_FormComponent.default, {
     location: location,
     maxGuest: maxGuest,
@@ -28587,7 +28582,7 @@ function Windbnb() {
     searchStay: searchStay
   }), /*#__PURE__*/_react.default.createElement("div", {
     className: "content"
-  }, location ? searchByLocation : maxNumberOfGuest));
+  }, stayDataList));
 }
 },{"react":"node_modules/react/index.js","./stays.json":"stays.json","./WindbnbList":"WindbnbList.js","./components/FormComponent":"components/FormComponent.js"}],"index.js":[function(require,module,exports) {
 "use strict";
