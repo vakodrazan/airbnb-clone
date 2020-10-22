@@ -28538,7 +28538,8 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 function ModalForm(props) {
   const showHideClassName = props.showModal ? "modal openModal" : "modal closeModal";
   return /*#__PURE__*/_react.default.createElement("div", {
-    className: showHideClassName
+    className: showHideClassName,
+    onMouseUp: props.closeModal
   }, /*#__PURE__*/_react.default.createElement("div", {
     className: "modal-main"
   }, /*#__PURE__*/_react.default.createElement(_FormComponent.default, {

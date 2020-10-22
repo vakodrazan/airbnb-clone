@@ -5,7 +5,7 @@ export default function ModalForm(props) {
     const showHideClassName = props.showModal ? "modal openModal" : "modal closeModal";
   
     return (
-        <div className={showHideClassName}>
+        <div className={showHideClassName} onMouseUp={props.closeModal}>
             <div className="modal-main">
                 <FormComponent 
                         setMaxGuest={props.setMaxGuest}
