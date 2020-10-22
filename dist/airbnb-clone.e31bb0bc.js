@@ -28487,6 +28487,7 @@ var _react = _interopRequireDefault(require("react"));
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
+// import '../modal.css';
 function FormComponent(props) {
   return /*#__PURE__*/_react.default.createElement("form", {
     onSubmit: props.searchStay,
@@ -28496,7 +28497,7 @@ function FormComponent(props) {
   }, /*#__PURE__*/_react.default.createElement("label", null, "Location"), /*#__PURE__*/_react.default.createElement("select", {
     name: "location",
     value: props.location,
-    onChange: props.onChange
+    onChange: e => props.setLocation(e.target.value)
   }, /*#__PURE__*/_react.default.createElement("option", {
     value: ""
   }, "Add location"), /*#__PURE__*/_react.default.createElement("option", {
@@ -28513,7 +28514,7 @@ function FormComponent(props) {
     type: "number",
     name: "numberOfGuest",
     value: props.maxGuest,
-    onChange: props.setMaxGuest,
+    onChange: e => props.setMaxGuest(e.target.value),
     placeholder: "How many of you will stay there"
   })), /*#__PURE__*/_react.default.createElement("button", {
     type: "submit"
@@ -28552,12 +28553,10 @@ function Windbnb() {
   } // Map through the array when it isn't filtered yet
 
 
-  const mapList = _stays.default.map(stay => {
-    return /*#__PURE__*/_react.default.createElement(_WindbnbList.default, {
-      key: stay.rating,
-      stay: stay
-    });
-  }); // ********* Filter by city name *********** \\
+  const mapList = _stays.default.map(stay => /*#__PURE__*/_react.default.createElement(_WindbnbList.default, {
+    key: stay.rating,
+    stay: stay
+  })); // ********* Filter by city name *********** \\
   // Filter the array by city
 
 
@@ -28572,13 +28571,12 @@ function Windbnb() {
   const filteredByNumberOfGuests = filterGuest.map(stay => /*#__PURE__*/_react.default.createElement(_WindbnbList.default, {
     key: stay.rating,
     stay: stay
-  }));
+  })); // The final result with the filtered or the original list
+
   const stayDataList = location ? filteredByCity : maxGuest ? filteredByNumberOfGuests : mapList;
   return /*#__PURE__*/_react.default.createElement(_react.default.Fragment, null, /*#__PURE__*/_react.default.createElement(_FormComponent.default, {
-    location: location,
-    maxGuest: maxGuest,
-    setMaxGuest: e => setMaxGuest(e.target.value),
-    onChange: e => setLocation(e.target.value),
+    setMaxGuest: setMaxGuest,
+    setLocation: setLocation,
     searchStay: searchStay
   }), /*#__PURE__*/_react.default.createElement("div", {
     className: "content"
@@ -28624,7 +28622,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "58984" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "50318" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};

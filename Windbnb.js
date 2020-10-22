@@ -14,11 +14,7 @@ export default function Windbnb() {
     }
 
     // Map through the array when it isn't filtered yet
-    const mapList = data.map(stay => {
-        return (
-            <WindbnbList key={stay.rating} stay={stay} />
-        )
-    });
+    const mapList = data.map(stay => <WindbnbList key={stay.rating} stay={stay} />);
 
     // ********* Filter by city name *********** \\
     // Filter the array by city
@@ -30,15 +26,14 @@ export default function Windbnb() {
     const filterGuest = stayData.filter(stay => stay.maxGuests >= maxGuest)
     const filteredByNumberOfGuests = filterGuest.map(stay => <WindbnbList key={stay.rating} stay={stay} />)
 
+    // The final result with the filtered or the original list
     const stayDataList = location ? filteredByCity : maxGuest ? filteredByNumberOfGuests :  mapList;
 
     return (
         <> 
             <FormComponent 
-                location={location} 
-                maxGuest={maxGuest}
-                setMaxGuest={(e) => setMaxGuest(e.target.value)}
-                onChange={(e) => setLocation(e.target.value)}
+                setMaxGuest={setMaxGuest}
+                setLocation={setLocation}
                 searchStay={searchStay} 
                 />
             <div className="content">
