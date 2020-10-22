@@ -7,6 +7,7 @@ export default function FormComponent(props) {
             <fieldset className="location">
                 <label>Location</label>
                 <select 
+                    className="location--search"
                     name="location"
                     value={props.location}
                     onChange={(e) => props.setLocation(e.target.value)}
