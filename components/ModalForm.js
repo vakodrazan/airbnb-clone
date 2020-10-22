@@ -1,5 +1,4 @@
 import React from 'react';
-import '../modal.css';
 import FormComponent from './FormComponent';
 
 export default function ModalForm(props) {

@@ -28475,7 +28475,84 @@ function WindbnbList({
     className: "description"
   }, stay.title));
 }
-},{"react":"node_modules/react/index.js"}],"../../AppData/Roaming/npm/node_modules/parcel-bundler/src/builtins/bundle-url.js":[function(require,module,exports) {
+},{"react":"node_modules/react/index.js"}],"components/FormComponent.js":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = FormComponent;
+
+var _react = _interopRequireDefault(require("react"));
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+// import '../modal.css';
+function FormComponent(props) {
+  return /*#__PURE__*/_react.default.createElement("form", {
+    onSubmit: props.searchStay,
+    className: "search-form"
+  }, /*#__PURE__*/_react.default.createElement("fieldset", {
+    className: "location"
+  }, /*#__PURE__*/_react.default.createElement("label", null, "Location"), /*#__PURE__*/_react.default.createElement("select", {
+    name: "location",
+    value: props.location,
+    onChange: e => props.setLocation(e.target.value)
+  }, /*#__PURE__*/_react.default.createElement("option", {
+    value: ""
+  }, "Add location"), /*#__PURE__*/_react.default.createElement("option", {
+    value: "helsinki"
+  }, "Helsinki"), /*#__PURE__*/_react.default.createElement("option", {
+    value: "turku"
+  }, "Turku"), /*#__PURE__*/_react.default.createElement("option", {
+    value: "vaasa"
+  }, "Vaasa"), /*#__PURE__*/_react.default.createElement("option", {
+    value: "oulu"
+  }, "Oulu"))), /*#__PURE__*/_react.default.createElement("fieldset", {
+    className: "guest"
+  }, /*#__PURE__*/_react.default.createElement("label", null, "Guests"), /*#__PURE__*/_react.default.createElement("input", {
+    type: "number",
+    name: "numberOfGuest",
+    value: props.maxGuest,
+    onChange: e => props.setMaxGuest(e.target.value),
+    placeholder: "How many of you will stay there"
+  })), /*#__PURE__*/_react.default.createElement("button", {
+    type: "submit",
+    onClick: props.closeModal
+  }, "Search"));
+}
+},{"react":"node_modules/react/index.js"}],"components/ModalForm.js":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = ModalForm;
+
+var _react = _interopRequireDefault(require("react"));
+
+var _FormComponent = _interopRequireDefault(require("./FormComponent"));
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function ModalForm(props) {
+  const showHideClassName = props.showModal ? "modal openModal" : "modal closeModal";
+  return /*#__PURE__*/_react.default.createElement("div", {
+    className: showHideClassName
+  }, /*#__PURE__*/_react.default.createElement("div", {
+    className: "modal-main"
+  }, /*#__PURE__*/_react.default.createElement(_FormComponent.default, {
+    setMaxGuest: props.setMaxGuest,
+    setLocation: props.setLocation,
+    searchStay: props.searchStay,
+    closeModal: props.closeModal
+  }), /*#__PURE__*/_react.default.createElement("button", {
+    onClick: props.closeModal
+  }, "close")));
+}
+
+;
+},{"react":"node_modules/react/index.js","./FormComponent":"components/FormComponent.js"}],"../../AppData/Roaming/npm/node_modules/parcel-bundler/src/builtins/bundle-url.js":[function(require,module,exports) {
 var bundleURL = null;
 
 function getBundleURLCached() {
@@ -28547,86 +28624,7 @@ var reloadCSS = require('_css_loader');
 
 module.hot.dispose(reloadCSS);
 module.hot.accept(reloadCSS);
-},{"_css_loader":"../../AppData/Roaming/npm/node_modules/parcel-bundler/src/builtins/css-loader.js"}],"components/FormComponent.js":[function(require,module,exports) {
-"use strict";
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.default = FormComponent;
-
-var _react = _interopRequireDefault(require("react"));
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-// import '../modal.css';
-function FormComponent(props) {
-  return /*#__PURE__*/_react.default.createElement("form", {
-    onSubmit: props.searchStay,
-    className: "search-form"
-  }, /*#__PURE__*/_react.default.createElement("fieldset", {
-    className: "location"
-  }, /*#__PURE__*/_react.default.createElement("label", null, "Location"), /*#__PURE__*/_react.default.createElement("select", {
-    name: "location",
-    value: props.location,
-    onChange: e => props.setLocation(e.target.value)
-  }, /*#__PURE__*/_react.default.createElement("option", {
-    value: ""
-  }, "Add location"), /*#__PURE__*/_react.default.createElement("option", {
-    value: "helsinki"
-  }, "Helsinki"), /*#__PURE__*/_react.default.createElement("option", {
-    value: "turku"
-  }, "Turku"), /*#__PURE__*/_react.default.createElement("option", {
-    value: "vaasa"
-  }, "Vaasa"), /*#__PURE__*/_react.default.createElement("option", {
-    value: "oulu"
-  }, "Oulu"))), /*#__PURE__*/_react.default.createElement("fieldset", {
-    className: "guest"
-  }, /*#__PURE__*/_react.default.createElement("label", null, "Guests"), /*#__PURE__*/_react.default.createElement("input", {
-    type: "number",
-    name: "numberOfGuest",
-    value: props.maxGuest,
-    onChange: e => props.setMaxGuest(e.target.value),
-    placeholder: "How many of you will stay there"
-  })), /*#__PURE__*/_react.default.createElement("button", {
-    type: "submit",
-    onClick: props.closeModal
-  }, "Search"));
-}
-},{"react":"node_modules/react/index.js"}],"components/ModalForm.js":[function(require,module,exports) {
-"use strict";
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.default = ModalForm;
-
-var _react = _interopRequireDefault(require("react"));
-
-require("../modal.css");
-
-var _FormComponent = _interopRequireDefault(require("./FormComponent"));
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-function ModalForm(props) {
-  const showHideClassName = props.showModal ? "modal openModal" : "modal closeModal";
-  return /*#__PURE__*/_react.default.createElement("div", {
-    className: showHideClassName
-  }, /*#__PURE__*/_react.default.createElement("div", {
-    className: "modal-main"
-  }, /*#__PURE__*/_react.default.createElement(_FormComponent.default, {
-    setMaxGuest: props.setMaxGuest,
-    setLocation: props.setLocation,
-    searchStay: props.searchStay,
-    closeModal: props.closeModal
-  }), /*#__PURE__*/_react.default.createElement("button", {
-    onClick: props.closeModal
-  }, "close")));
-}
-
-;
-},{"react":"node_modules/react/index.js","../modal.css":"modal.css","./FormComponent":"components/FormComponent.js"}],"components/Modal.js":[function(require,module,exports) {
+},{"_css_loader":"../../AppData/Roaming/npm/node_modules/parcel-bundler/src/builtins/css-loader.js"}],"components/Modal.js":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -28637,6 +28635,8 @@ exports.default = Modal;
 var _react = _interopRequireWildcard(require("react"));
 
 var _ModalForm = _interopRequireDefault(require("./ModalForm"));
+
+require("../modal.css");
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -28665,7 +28665,7 @@ function Modal(props) {
     searchStay: props.searchStay
   }));
 }
-},{"react":"node_modules/react/index.js","./ModalForm":"components/ModalForm.js"}],"Windbnb.js":[function(require,module,exports) {
+},{"react":"node_modules/react/index.js","./ModalForm":"components/ModalForm.js","../modal.css":"modal.css"}],"Windbnb.js":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {

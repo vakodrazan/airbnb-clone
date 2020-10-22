@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import ModalForm from './ModalForm';
+import '../modal.css';
 
 export default function Modal(props) {
     const [showModal, setShowModal] = useState(false);
