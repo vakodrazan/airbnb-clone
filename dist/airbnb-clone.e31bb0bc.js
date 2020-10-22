@@ -28495,6 +28495,7 @@ function FormComponent(props) {
   }, /*#__PURE__*/_react.default.createElement("fieldset", {
     className: "location"
   }, /*#__PURE__*/_react.default.createElement("label", null, "Location"), /*#__PURE__*/_react.default.createElement("select", {
+    className: "location--search",
     name: "location",
     value: props.location,
     onChange: e => props.setLocation(e.target.value)
@@ -28626,7 +28627,36 @@ var reloadCSS = require('_css_loader');
 
 module.hot.dispose(reloadCSS);
 module.hot.accept(reloadCSS);
-},{"_css_loader":"../../AppData/Roaming/npm/node_modules/parcel-bundler/src/builtins/css-loader.js"}],"components/Modal.js":[function(require,module,exports) {
+},{"_css_loader":"../../AppData/Roaming/npm/node_modules/parcel-bundler/src/builtins/css-loader.js"}],"components/searchForm.js":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = SearchForm;
+
+var _react = _interopRequireDefault(require("react"));
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function SearchForm() {
+  return /*#__PURE__*/_react.default.createElement(_react.default.Fragment, null, /*#__PURE__*/_react.default.createElement("fieldset", {
+    className: "location"
+  }, /*#__PURE__*/_react.default.createElement("label", null, "Location"), /*#__PURE__*/_react.default.createElement("input", {
+    className: "location--search",
+    name: "location",
+    placeholder: "Add location"
+  })), /*#__PURE__*/_react.default.createElement("fieldset", {
+    className: "guest"
+  }, /*#__PURE__*/_react.default.createElement("label", null, "Guests"), /*#__PURE__*/_react.default.createElement("input", {
+    type: "number",
+    name: "numberOfGuest",
+    placeholder: "Add guest"
+  })), /*#__PURE__*/_react.default.createElement("button", {
+    type: "button"
+  }, "Search"));
+}
+},{"react":"node_modules/react/index.js"}],"components/Modal.js":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -28639,6 +28669,8 @@ var _react = _interopRequireWildcard(require("react"));
 var _ModalForm = _interopRequireDefault(require("./ModalForm"));
 
 require("../modal.css");
+
+var _searchForm = _interopRequireDefault(require("./searchForm"));
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -28657,9 +28689,10 @@ function Modal(props) {
     setShowModal(false);
   }
 
-  return /*#__PURE__*/_react.default.createElement(_react.default.Fragment, null, /*#__PURE__*/_react.default.createElement("button", {
+  return /*#__PURE__*/_react.default.createElement(_react.default.Fragment, null, /*#__PURE__*/_react.default.createElement("div", {
+    className: "search-form",
     onClick: openModal
-  }, "Open Modal"), /*#__PURE__*/_react.default.createElement(_ModalForm.default, {
+  }, /*#__PURE__*/_react.default.createElement(_searchForm.default, null)), /*#__PURE__*/_react.default.createElement(_ModalForm.default, {
     showModal: showModal,
     closeModal: closeModal,
     setMaxGuest: props.setMaxGuest,
@@ -28667,7 +28700,7 @@ function Modal(props) {
     searchStay: props.searchStay
   }));
 }
-},{"react":"node_modules/react/index.js","./ModalForm":"components/ModalForm.js","../modal.css":"modal.css"}],"Windbnb.js":[function(require,module,exports) {
+},{"react":"node_modules/react/index.js","./ModalForm":"components/ModalForm.js","../modal.css":"modal.css","./searchForm":"components/searchForm.js"}],"Windbnb.js":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
