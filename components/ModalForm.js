@@ -14,7 +14,7 @@ export default function ModalForm(props) {
                         closeModal={props.closeModal}
                     />
                 <button className="modal-btn" onClick={props.closeModal}>Close</button>
-                </div>
+            </div>
         </div>
     );
   };
