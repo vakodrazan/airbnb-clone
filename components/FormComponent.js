@@ -28,7 +28,7 @@ export default function FormComponent(props) {
                     placeholder="How many of you will stay there"
                 />
             </fieldset>
-            <button type="submit">Search</button>
+            <button type="submit" onClick={props.closeModal}>Search</button>
         </form>
     )
 }
