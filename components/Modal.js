@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import ModalForm from './ModalForm';
 import '../modal.css';
+import SearchForm from './searchForm';
 
 export default function Modal(props) {
     const [showModal, setShowModal] = useState(false);
@@ -13,7 +14,9 @@ export default function Modal(props) {
     }
     return (
         <>
-            <button onClick={openModal}>Open Modal</button>
+            <div className="search-form" onClick={openModal}>
+                <SearchForm />
+            </div>
             <ModalForm 
                 showModal={showModal} 
                 closeModal={closeModal} 
