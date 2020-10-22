@@ -28517,10 +28517,10 @@ function FormComponent(props) {
     value: props.maxGuest,
     onChange: e => props.setMaxGuest(e.target.value),
     placeholder: "How many of you will stay there"
-  })), /*#__PURE__*/_react.default.createElement("button", {
+  })), /*#__PURE__*/_react.default.createElement("fieldset", null, /*#__PURE__*/_react.default.createElement("button", {
     type: "submit",
     onClick: props.closeModal
-  }, "Search"));
+  }, "Search")));
 }
 },{"react":"node_modules/react/index.js"}],"components/ModalForm.js":[function(require,module,exports) {
 "use strict";

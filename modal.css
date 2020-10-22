@@ -10,12 +10,12 @@
 .modal-main {
     position:fixed;
     background: white;
-    width: 90%;
+    width: 99%;
     height: auto;
-    top: 15%;
+    top: 20%;
     left: 50%;
     transform: translate(-50%, -50%);
-    padding: 1rem;
+    padding: 20px;
     border-radius: 10px;
 }
 
@@ -33,4 +33,25 @@
     background-color: blue;
     font-size: 16px;
     border-radius: 6px;
+}
+
+@media (min-width: 650px) { 
+    .modal-main {
+        top: 9%;
+        padding-top: 6rem;
+        padding-bottom: 2rem;
+        padding-left: 40px;
+        padding-right: 40px;
+    }
+    
+    .modal-main fieldset {
+        width: 350px;
+    }
+    .modal-main button {
+        width: 100px;
+        text-align: center;
+        margin: 0 3rem;
+        border-radius: 16px;
+        background-color: #EB5757;
+    }
 }
