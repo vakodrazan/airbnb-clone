@@ -3,7 +3,7 @@ import React from 'react';
 
 export default function FormComponent(props) {
     return (
-        <form onSubmit={props.searchStay} className="search-form">
+        <form onSubmit={props.searchStay} className="search-form container">
             <fieldset className="location">
                 <label>Location</label>
                 <select 

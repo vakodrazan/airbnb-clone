@@ -9,7 +9,7 @@ export default function Modal(props) {
     function openModal() {
         setShowModal(true);
     }
-    function closeModal() {
+    function closeModal(e) {
         setShowModal(false);
     }
     return (

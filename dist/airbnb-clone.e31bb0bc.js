@@ -28491,7 +28491,7 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 function FormComponent(props) {
   return /*#__PURE__*/_react.default.createElement("form", {
     onSubmit: props.searchStay,
-    className: "search-form"
+    className: "search-form container"
   }, /*#__PURE__*/_react.default.createElement("fieldset", {
     className: "location"
   }, /*#__PURE__*/_react.default.createElement("label", null, "Location"), /*#__PURE__*/_react.default.createElement("select", {
@@ -28539,8 +28539,7 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 function ModalForm(props) {
   const showHideClassName = props.showModal ? "modal openModal" : "modal closeModal";
   return /*#__PURE__*/_react.default.createElement("div", {
-    className: showHideClassName,
-    onMouseUp: props.closeModal
+    className: showHideClassName
   }, /*#__PURE__*/_react.default.createElement("div", {
     className: "modal-main"
   }, /*#__PURE__*/_react.default.createElement(_FormComponent.default, {
@@ -28685,7 +28684,7 @@ function Modal(props) {
     setShowModal(true);
   }
 
-  function closeModal() {
+  function closeModal(e) {
     setShowModal(false);
   }
 
