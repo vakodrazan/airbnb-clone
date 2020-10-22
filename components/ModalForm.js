@@ -13,7 +13,7 @@ export default function ModalForm(props) {
                         searchStay={props.searchStay} 
                         closeModal={props.closeModal}
                     />
-                <button onClick={props.closeModal}>close</button>
+                <button className="modal-btn" onClick={props.closeModal}>Close</button>
                 </div>
         </div>
     );

@@ -28547,8 +28547,9 @@ function ModalForm(props) {
     searchStay: props.searchStay,
     closeModal: props.closeModal
   }), /*#__PURE__*/_react.default.createElement("button", {
+    className: "modal-btn",
     onClick: props.closeModal
-  }, "close")));
+  }, "Close")));
 }
 
 ;
@@ -28767,7 +28768,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "50318" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "56601" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};
