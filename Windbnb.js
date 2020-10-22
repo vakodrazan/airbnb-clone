@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import data from './stays.json';
 import WindbnbList from './WindbnbList';
-import FormComponent from './components/FormComponent';
+import Modal from './components/Modal';
 
 export default function Windbnb() {
     const [location, setLocation] = useState('');
@@ -31,11 +31,11 @@ export default function Windbnb() {
 
     return (
         <> 
-            <FormComponent 
+            <Modal
                 setMaxGuest={setMaxGuest}
                 setLocation={setLocation}
                 searchStay={searchStay} 
-                />
+            />
             <div className="content">
                 {stayDataList}
             </div>

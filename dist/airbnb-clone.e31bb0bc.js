@@ -28475,7 +28475,79 @@ function WindbnbList({
     className: "description"
   }, stay.title));
 }
-},{"react":"node_modules/react/index.js"}],"components/FormComponent.js":[function(require,module,exports) {
+},{"react":"node_modules/react/index.js"}],"../../AppData/Roaming/npm/node_modules/parcel-bundler/src/builtins/bundle-url.js":[function(require,module,exports) {
+var bundleURL = null;
+
+function getBundleURLCached() {
+  if (!bundleURL) {
+    bundleURL = getBundleURL();
+  }
+
+  return bundleURL;
+}
+
+function getBundleURL() {
+  // Attempt to find the URL of the current script and use that as the base URL
+  try {
+    throw new Error();
+  } catch (err) {
+    var matches = ('' + err.stack).match(/(https?|file|ftp|chrome-extension|moz-extension):\/\/[^)\n]+/g);
+
+    if (matches) {
+      return getBaseURL(matches[0]);
+    }
+  }
+
+  return '/';
+}
+
+function getBaseURL(url) {
+  return ('' + url).replace(/^((?:https?|file|ftp|chrome-extension|moz-extension):\/\/.+)\/[^/]+$/, '$1') + '/';
+}
+
+exports.getBundleURL = getBundleURLCached;
+exports.getBaseURL = getBaseURL;
+},{}],"../../AppData/Roaming/npm/node_modules/parcel-bundler/src/builtins/css-loader.js":[function(require,module,exports) {
+var bundle = require('./bundle-url');
+
+function updateLink(link) {
+  var newLink = link.cloneNode();
+
+  newLink.onload = function () {
+    link.remove();
+  };
+
+  newLink.href = link.href.split('?')[0] + '?' + Date.now();
+  link.parentNode.insertBefore(newLink, link.nextSibling);
+}
+
+var cssTimeout = null;
+
+function reloadCSS() {
+  if (cssTimeout) {
+    return;
+  }
+
+  cssTimeout = setTimeout(function () {
+    var links = document.querySelectorAll('link[rel="stylesheet"]');
+
+    for (var i = 0; i < links.length; i++) {
+      if (bundle.getBaseURL(links[i].href) === bundle.getBundleURL()) {
+        updateLink(links[i]);
+      }
+    }
+
+    cssTimeout = null;
+  }, 50);
+}
+
+module.exports = reloadCSS;
+},{"./bundle-url":"../../AppData/Roaming/npm/node_modules/parcel-bundler/src/builtins/bundle-url.js"}],"modal.css":[function(require,module,exports) {
+var reloadCSS = require('_css_loader');
+
+module.hot.dispose(reloadCSS);
+module.hot.accept(reloadCSS);
+},{"_css_loader":"../../AppData/Roaming/npm/node_modules/parcel-bundler/src/builtins/css-loader.js"}],"components/FormComponent.js":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -28517,10 +28589,83 @@ function FormComponent(props) {
     onChange: e => props.setMaxGuest(e.target.value),
     placeholder: "How many of you will stay there"
   })), /*#__PURE__*/_react.default.createElement("button", {
-    type: "submit"
+    type: "submit",
+    onClick: props.closeModal
   }, "Search"));
 }
-},{"react":"node_modules/react/index.js"}],"Windbnb.js":[function(require,module,exports) {
+},{"react":"node_modules/react/index.js"}],"components/ModalForm.js":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = ModalForm;
+
+var _react = _interopRequireDefault(require("react"));
+
+require("../modal.css");
+
+var _FormComponent = _interopRequireDefault(require("./FormComponent"));
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function ModalForm(props) {
+  const showHideClassName = props.showModal ? "modal openModal" : "modal closeModal";
+  return /*#__PURE__*/_react.default.createElement("div", {
+    className: showHideClassName
+  }, /*#__PURE__*/_react.default.createElement("div", {
+    className: "modal-main"
+  }, /*#__PURE__*/_react.default.createElement(_FormComponent.default, {
+    setMaxGuest: props.setMaxGuest,
+    setLocation: props.setLocation,
+    searchStay: props.searchStay,
+    closeModal: props.closeModal
+  }), /*#__PURE__*/_react.default.createElement("button", {
+    onClick: props.closeModal
+  }, "close")));
+}
+
+;
+},{"react":"node_modules/react/index.js","../modal.css":"modal.css","./FormComponent":"components/FormComponent.js"}],"components/Modal.js":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = Modal;
+
+var _react = _interopRequireWildcard(require("react"));
+
+var _ModalForm = _interopRequireDefault(require("./ModalForm"));
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _getRequireWildcardCache() { if (typeof WeakMap !== "function") return null; var cache = new WeakMap(); _getRequireWildcardCache = function () { return cache; }; return cache; }
+
+function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } if (obj === null || typeof obj !== "object" && typeof obj !== "function") { return { default: obj }; } var cache = _getRequireWildcardCache(); if (cache && cache.has(obj)) { return cache.get(obj); } var newObj = {}; var hasPropertyDescriptor = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) { var desc = hasPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : null; if (desc && (desc.get || desc.set)) { Object.defineProperty(newObj, key, desc); } else { newObj[key] = obj[key]; } } } newObj.default = obj; if (cache) { cache.set(obj, newObj); } return newObj; }
+
+function Modal(props) {
+  const [showModal, setShowModal] = (0, _react.useState)(false);
+
+  function openModal() {
+    setShowModal(true);
+  }
+
+  function closeModal() {
+    setShowModal(false);
+  }
+
+  return /*#__PURE__*/_react.default.createElement(_react.default.Fragment, null, /*#__PURE__*/_react.default.createElement("button", {
+    onClick: openModal
+  }, "Open Modal"), /*#__PURE__*/_react.default.createElement(_ModalForm.default, {
+    showModal: showModal,
+    closeModal: closeModal,
+    setMaxGuest: props.setMaxGuest,
+    setLocation: props.setLocation,
+    searchStay: props.searchStay
+  }));
+}
+},{"react":"node_modules/react/index.js","./ModalForm":"components/ModalForm.js"}],"Windbnb.js":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -28534,7 +28679,7 @@ var _stays = _interopRequireDefault(require("./stays.json"));
 
 var _WindbnbList = _interopRequireDefault(require("./WindbnbList"));
 
-var _FormComponent = _interopRequireDefault(require("./components/FormComponent"));
+var _Modal = _interopRequireDefault(require("./components/Modal"));
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -28574,7 +28719,7 @@ function Windbnb() {
   })); // The final result with the filtered or the original list
 
   const stayDataList = location ? filteredByCity : maxGuest ? filteredByNumberOfGuests : mapList;
-  return /*#__PURE__*/_react.default.createElement(_react.default.Fragment, null, /*#__PURE__*/_react.default.createElement(_FormComponent.default, {
+  return /*#__PURE__*/_react.default.createElement(_react.default.Fragment, null, /*#__PURE__*/_react.default.createElement(_Modal.default, {
     setMaxGuest: setMaxGuest,
     setLocation: setLocation,
     searchStay: searchStay
@@ -28582,7 +28727,7 @@ function Windbnb() {
     className: "content"
   }, stayDataList));
 }
-},{"react":"node_modules/react/index.js","./stays.json":"stays.json","./WindbnbList":"WindbnbList.js","./components/FormComponent":"components/FormComponent.js"}],"index.js":[function(require,module,exports) {
+},{"react":"node_modules/react/index.js","./stays.json":"stays.json","./WindbnbList":"WindbnbList.js","./components/Modal":"components/Modal.js"}],"index.js":[function(require,module,exports) {
 "use strict";
 
 var _react = _interopRequireDefault(require("react"));
