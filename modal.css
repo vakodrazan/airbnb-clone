@@ -11,7 +11,7 @@
     position:fixed;
     background: white;
     width: 99%;
-    height: auto;
+    height: 45%;
     top: 20%;
     left: 50%;
     transform: translate(-50%, -50%);
@@ -37,9 +37,8 @@
 
 @media (min-width: 650px) { 
     .modal-main {
-        top: 9%;
-        padding-top: 6rem;
-        padding-bottom: 2rem;
+        top: 30%;
+        padding-top: 10rem;
         padding-left: 40px;
         padding-right: 40px;
     }
