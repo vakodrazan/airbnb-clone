@@ -1,7 +1,16 @@
 import React from 'react';
+import AddGuest from './AddGuest';
 // import '../modal.css';
 
 export default function FormComponent(props) {
+    function counterGuest() {
+        return (
+            <>
+                <AddGuest />
+            </>
+        )
+    }
+
     return (
         <form onSubmit={props.searchStay} className="search-form container">
             <fieldset className="location">
@@ -26,6 +35,7 @@ export default function FormComponent(props) {
                     name="numberOfGuest"
                     value={props.maxGuest}
                     onChange={(e) => props.setMaxGuest(e.target.value)}
+                    onClick={counterGuest}
                     placeholder="How many of you will stay there"
                 />
             </fieldset>

@@ -28475,6 +28475,33 @@ function WindbnbList({
     className: "description"
   }, stay.title));
 }
+},{"react":"node_modules/react/index.js"}],"components/AddGuest.js":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = AddGuest;
+
+var _react = _interopRequireWildcard(require("react"));
+
+function _getRequireWildcardCache() { if (typeof WeakMap !== "function") return null; var cache = new WeakMap(); _getRequireWildcardCache = function () { return cache; }; return cache; }
+
+function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } if (obj === null || typeof obj !== "object" && typeof obj !== "function") { return { default: obj }; } var cache = _getRequireWildcardCache(); if (cache && cache.has(obj)) { return cache.get(obj); } var newObj = {}; var hasPropertyDescriptor = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) { var desc = hasPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : null; if (desc && (desc.get || desc.set)) { Object.defineProperty(newObj, key, desc); } else { newObj[key] = obj[key]; } } } newObj.default = obj; if (cache) { cache.set(obj, newObj); } return newObj; }
+
+function AddGuest() {
+  const [countAdult, setCountAdult] = (0, _react.useState)(0);
+  const [countChildren, setCountChildren] = (0, _react.useState)(0);
+  return /*#__PURE__*/_react.default.createElement("div", null, /*#__PURE__*/_react.default.createElement("p", null, /*#__PURE__*/_react.default.createElement("strong", null, "Adults"), /*#__PURE__*/_react.default.createElement("span", null, "Ages 13 or above"), /*#__PURE__*/_react.default.createElement("button", {
+    onClick: () => setCountAdult(countAdult - 1)
+  }, "-"), /*#__PURE__*/_react.default.createElement("small", null, countAdult), /*#__PURE__*/_react.default.createElement("button", {
+    onClick: () => setCountAdult(countAdult + 1)
+  }, "+")), /*#__PURE__*/_react.default.createElement("p", null, /*#__PURE__*/_react.default.createElement("strong", null, "Children"), /*#__PURE__*/_react.default.createElement("span", null, "Ages 2-12"), /*#__PURE__*/_react.default.createElement("button", {
+    onClick: () => setCountChildren(countChildren - 1)
+  }, "-"), /*#__PURE__*/_react.default.createElement("small", null, countChildren), /*#__PURE__*/_react.default.createElement("button", {
+    onClick: () => setCountChildren(countChildren + 1)
+  }, "+")), /*#__PURE__*/_react.default.createElement("p", null, countAdult + countChildren));
+}
 },{"react":"node_modules/react/index.js"}],"components/FormComponent.js":[function(require,module,exports) {
 "use strict";
 
@@ -28485,10 +28512,16 @@ exports.default = FormComponent;
 
 var _react = _interopRequireDefault(require("react"));
 
+var _AddGuest = _interopRequireDefault(require("./AddGuest"));
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 // import '../modal.css';
 function FormComponent(props) {
+  function counterGuest() {
+    return /*#__PURE__*/_react.default.createElement(_react.default.Fragment, null, /*#__PURE__*/_react.default.createElement(_AddGuest.default, null));
+  }
+
   return /*#__PURE__*/_react.default.createElement("form", {
     onSubmit: props.searchStay,
     className: "search-form container"
@@ -28516,13 +28549,14 @@ function FormComponent(props) {
     name: "numberOfGuest",
     value: props.maxGuest,
     onChange: e => props.setMaxGuest(e.target.value),
+    onClick: counterGuest,
     placeholder: "How many of you will stay there"
   })), /*#__PURE__*/_react.default.createElement("fieldset", null, /*#__PURE__*/_react.default.createElement("button", {
     type: "submit",
     onClick: props.closeModal
   }, "Search")));
 }
-},{"react":"node_modules/react/index.js"}],"components/ModalForm.js":[function(require,module,exports) {
+},{"react":"node_modules/react/index.js","./AddGuest":"components/AddGuest.js"}],"components/ModalForm.js":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
