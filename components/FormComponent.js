@@ -13,7 +13,7 @@ export default function FormComponent(props) {
 
     return (
         <form onSubmit={props.searchStay} className="search-form container">
-            <fieldset className="location">
+            <fieldset className="content-field location">
                 <label>Location</label>
                 <select 
                     className="location--search"
@@ -28,7 +28,7 @@ export default function FormComponent(props) {
                     <option value="oulu">Oulu</option>
                 </select>
             </fieldset>
-            <fieldset className="guest">
+            <fieldset className="content-field guest">
                 <label>Guests</label>
                 <input 
                     type="number"
@@ -39,7 +39,7 @@ export default function FormComponent(props) {
                     placeholder="How many of you will stay there"
                 />
             </fieldset>
-            <fieldset>
+            <fieldset className="content-field submit">
                 <button type="submit" onClick={props.closeModal}>Search</button>
             </fieldset>
         </form>

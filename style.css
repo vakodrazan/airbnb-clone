@@ -97,7 +97,6 @@ fieldset {
     display: flex;
     flex-direction: column;
     position: relative;
-    padding-bottom: 1rem;
 }
 
 /* .location {
@@ -117,6 +116,26 @@ fieldset {
     margin: 0;
 }
 
+.content-field {
+    padding-top: 27px;
+    padding-bottom: 20px;
+    padding-left: 16px;
+    text-align: center;
+    box-shadow: 0px 1px 6px rgba(0, 0, 0, 0.1);
+}
+
+.location {
+    padding-left: 27px;
+    border-top-left-radius: 16px;
+    border-bottom-left-radius: 16px;
+}
+
+.submit {
+    padding-right: 27px;
+    border-top-right-radius: 16px;
+    border-bottom-right-radius: 16px;
+}
+
  label {
     position: absolute;
     left: 10%;
@@ -125,22 +144,14 @@ fieldset {
 
  input {
     border-radius: 16px;
-    padding-top: 27px;
-    padding-bottom: 10px;
-    padding-left: 16px;
     background-color: #fff;
     border: #fff;
-    box-shadow: 0px 1px 6px rgba(0, 0, 0, 0.1);
 }
 
 .location--search {
     border: #fff;
     border-radius: 16px;
-    padding-top: 27px;
-    padding-bottom: 10px;
-    padding-left: 16px;
     background-color: #fff;
-    box-shadow: 0px 1px 6px rgba(0, 0, 0, 0.1);
 }
 
 form {
@@ -150,10 +161,7 @@ form {
 .search-form button {
     border: #fff;
     background-color: #fff;
-    box-shadow: 0px 1px 6px rgba(0, 0, 0, 0.1);
     border-radius: 16px;
-    padding-top: 19px;
-    padding-bottom: 19px;
 }
 
 @media (min-width: 650px) {

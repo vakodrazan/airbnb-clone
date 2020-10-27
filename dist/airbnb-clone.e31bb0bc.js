@@ -28526,7 +28526,7 @@ function FormComponent(props) {
     onSubmit: props.searchStay,
     className: "search-form container"
   }, /*#__PURE__*/_react.default.createElement("fieldset", {
-    className: "location"
+    className: "content-field location"
   }, /*#__PURE__*/_react.default.createElement("label", null, "Location"), /*#__PURE__*/_react.default.createElement("select", {
     className: "location--search",
     name: "location",
@@ -28543,7 +28543,7 @@ function FormComponent(props) {
   }, "Vaasa"), /*#__PURE__*/_react.default.createElement("option", {
     value: "oulu"
   }, "Oulu"))), /*#__PURE__*/_react.default.createElement("fieldset", {
-    className: "guest"
+    className: "content-field guest"
   }, /*#__PURE__*/_react.default.createElement("label", null, "Guests"), /*#__PURE__*/_react.default.createElement("input", {
     type: "number",
     name: "numberOfGuest",
@@ -28551,7 +28551,9 @@ function FormComponent(props) {
     onChange: e => props.setMaxGuest(e.target.value),
     onClick: counterGuest,
     placeholder: "How many of you will stay there"
-  })), /*#__PURE__*/_react.default.createElement("fieldset", null, /*#__PURE__*/_react.default.createElement("button", {
+  })), /*#__PURE__*/_react.default.createElement("fieldset", {
+    className: "content-field submit"
+  }, /*#__PURE__*/_react.default.createElement("button", {
     type: "submit",
     onClick: props.closeModal
   }, "Search")));
@@ -28828,7 +28830,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "65080" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "60500" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};
