@@ -1,17 +1,31 @@
 import React from 'react';
-import FormComponent from './FormComponent';
 
 
-export default function SearchForm(props) {
+export default function SearchForm() {
     return (
         <>
-            <FormComponent 
-                setMaxGuest={props.setMaxGuest}
-                setLocation={props.setLocation}
-                searchStay={props.searchStay} 
-                closeModal={props.closeModal}
-            
-            />
+            <form className="search-form container">
+                <fieldset className="content-field location">
+                    <label>Location</label>
+                    <input 
+                        className="location--search"
+                        name="location"
+                        placeholder="Add location"
+                    >
+                    </input>
+                </fieldset>
+                <fieldset className="content-field guest">
+                    <label>Guests</label>
+                    <input 
+                        type="number"
+                        name="numberOfGuest"
+                        placeholder="How many of you will stay there"
+                    />
+                </fieldset>
+                <fieldset className="content-field submit">
+                    <button>Search</button>
+                </fieldset>
+            </form>
         </>
     )
 }

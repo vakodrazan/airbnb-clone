@@ -28672,19 +28672,28 @@ exports.default = SearchForm;
 
 var _react = _interopRequireDefault(require("react"));
 
-var _FormComponent = _interopRequireDefault(require("./FormComponent"));
-
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-function SearchForm(props) {
-  return /*#__PURE__*/_react.default.createElement(_react.default.Fragment, null, /*#__PURE__*/_react.default.createElement(_FormComponent.default, {
-    setMaxGuest: props.setMaxGuest,
-    setLocation: props.setLocation,
-    searchStay: props.searchStay,
-    closeModal: props.closeModal
-  }));
+function SearchForm() {
+  return /*#__PURE__*/_react.default.createElement(_react.default.Fragment, null, /*#__PURE__*/_react.default.createElement("form", {
+    className: "search-form container"
+  }, /*#__PURE__*/_react.default.createElement("fieldset", {
+    className: "content-field location"
+  }, /*#__PURE__*/_react.default.createElement("label", null, "Location"), /*#__PURE__*/_react.default.createElement("input", {
+    className: "location--search",
+    name: "location",
+    placeholder: "Add location"
+  })), /*#__PURE__*/_react.default.createElement("fieldset", {
+    className: "content-field guest"
+  }, /*#__PURE__*/_react.default.createElement("label", null, "Guests"), /*#__PURE__*/_react.default.createElement("input", {
+    type: "number",
+    name: "numberOfGuest",
+    placeholder: "How many of you will stay there"
+  })), /*#__PURE__*/_react.default.createElement("fieldset", {
+    className: "content-field submit"
+  }, /*#__PURE__*/_react.default.createElement("button", null, "Search"))));
 }
-},{"react":"node_modules/react/index.js","./FormComponent":"components/FormComponent.js"}],"components/Modal.js":[function(require,module,exports) {
+},{"react":"node_modules/react/index.js"}],"components/Modal.js":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -28830,7 +28839,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "60500" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "63249" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};
